@@ -16,7 +16,7 @@
 
 int main(int argc, char *argv[]) {
   if (strcmp(TMP_DIR, "") == 0) {
-    fprintf(stderr, "unsupported operating system\n");
+    fprintf(stderr, "unsupported operating system.\n");
     return 1;
   }
   
@@ -33,9 +33,10 @@ int main(int argc, char *argv[]) {
   char file_path[TMP_DIR_LEN + UUID_STR_LEN + 3];
   sprintf(file_path, "%s%s.md", TMP_DIR, uuid);
 
+  printf("creating scratch file in '%s'.\n", file_path);
+
   pid_t pid;
   pid = fork();
-
  
   if (pid < 0) {
     fprintf(stderr, "forking failed\n");
@@ -49,7 +50,6 @@ int main(int argc, char *argv[]) {
     execvp(editor, args);
   } else {
     wait(NULL);
-    printf("wrote scratch file to '%s'\n", file_path);
   }
 
   free(uuid);
