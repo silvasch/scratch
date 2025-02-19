@@ -1,4 +1,4 @@
-binary_name := "hello"
+binary_name := "scratch"
 
 libuuid := `pkg-config uuid --cflags --libs`
 

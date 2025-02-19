@@ -18,7 +18,7 @@
         };
 
         # the name of your project.
-        pname = "hello";
+        pname = "scratch";
       in
       {
         devShell = pkgs.mkShell {
