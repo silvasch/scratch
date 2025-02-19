@@ -6,6 +6,8 @@
 
 #include <uuid.h>
 
+#define VERSION "v1.0.0"
+
 #ifdef __linux__
   #define TMP_DIR "/tmp/"
 #elif
@@ -39,6 +41,13 @@ void run_editor(char *editor, char file_path[FILE_PATH_LEN]) {
 }
 
 int main(int argc, char *argv[]) {
+  if (argc > 1) {
+    if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-v") == 0) {
+      printf("%s\n", VERSION);
+      return 0;
+    }
+  }
+  
   if (strcmp(TMP_DIR, "") == 0) {
     fprintf(stderr, "unsupported operating system.\n");
     return 1;
