@@ -12,7 +12,7 @@
   #define TMP_DIR ""
 #endif
 
-#define FILE_PATH_LEN sizeof(TMP_DIR) + UUID_STR_LEN + 3
+#define FILE_PATH_LEN sizeof(TMP_DIR) + UUID_STR_LEN + 11
 
 char *get_editor() {
   char* editor = getenv("EDITOR");
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
   char *uuid = get_uuid();
    
   char file_path[FILE_PATH_LEN];
-  sprintf(file_path, "%s%s.md", TMP_DIR, uuid);
+  sprintf(file_path, "%sscratch-%s.md", TMP_DIR, uuid);
 
   printf("creating scratch file in '%s'.\n", file_path);
 
@@ -65,7 +65,6 @@ int main(int argc, char *argv[]) {
   }
 
   free(uuid);
-  free(editor);
   
   return 0;
 }
